@@ -10,21 +10,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Fonts\ocr-a-extended.ttf" />
-    <None Remove="Fonts\RobotoMono-Regular.ttf" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="Fonts\ocr-a-extended.ttf" />
-    <Resource Include="Fonts\RobotoMono-Regular.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\app_icon.ico" />
-  </ItemGroup>
+	<ItemGroup>
+		<!-- Файл будет копироваться как в выходную директорию сборки, так и в директорию публикации -->
+		<Content Include="Fonts\ocr-a-extended.ttf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="Fonts\RobotoMono-Regular.ttf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="Images\app_icon.ico">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="Settings.cfg">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<!-- Можно добавить дополнительные файлы сюда, используя тот же шаблон -->
+	</ItemGroup>
 
   <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
