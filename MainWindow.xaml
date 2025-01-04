@@ -1,0 +1,35 @@
+﻿<Window x:Class="FlySafe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlySafe"
+        mc:Ignorable="d"
+        Title="FlySafe" Height="130" Width="800" Background="#2C2F33"
+        WindowStyle="None" ResizeMode="NoResize"
+        Icon="pack://application:,,,/Images/app_icon.ico">
+
+    <Window.Resources>
+        <!-- Добавляем шрифт в качестве ресурса -->
+        <FontFamily x:Key="OcrFontFamily">/FlySafe;component/Fonts/OCR-A-Extended.ttf#OCR A Extended</FontFamily>
+        <!-- Добавляем шрифт Roboto Mono для TextBox -->
+        <FontFamily x:Key="RobotoMonoFontFamily">/FlySafe;component/Fonts/RobotoMono-Regular.ttf#Roboto Mono</FontFamily>
+    </Window.Resources>
+
+    <Grid Background="#2C2F33" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+        <!-- Кнопка WARNING (не меняем) -->
+        <Button Content="WARNING" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" Margin="10,10,0,0" Foreground="#FF0000" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" Background="#2C2F33" BorderBrush="Black" BorderThickness="1" FontSize="18"/>
+
+        <!-- Кнопка CAUTION (не меняем) -->
+        <Button Content="CAUTION" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" Margin="10,70,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" Background="#2C2F33" BorderBrush="Black" BorderThickness="1" FontSize="18"/>
+
+        <!-- Лейбл ECAM MESSAGE TEST с правым кликом -->
+        <Label x:Name="ECAMLabel" Content="ECAM MESSAGE TEST" HorizontalAlignment="Left" VerticalAlignment="Top" Width="350" Height="110" Margin="220,10,10,0" FontFamily="{StaticResource RobotoMonoFontFamily}" Background="#2C2F33" Foreground="White" BorderBrush="Black" BorderThickness="1" MouseRightButtonDown="ECAMLabel_MouseRightButtonDown"/>
+
+        <!-- Лейблы (без изменений) -->
+        <Label Content="FLT CNT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="580,10,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="FUEL" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="580,70,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="ANTI-ICE" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="690,10,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="APU" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="690,70,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    </Grid>
+</Window>
