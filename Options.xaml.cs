@@ -12,15 +12,12 @@ namespace FlySafe
         public NewWindow()
         {
             InitializeComponent();
-
-            // Подписываемся на событие загрузки окна
             this.Loaded += NewWindow_Loaded;
         }
 
-        // Обработчик события "Окно загружено"
         private void NewWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            // Загружаем состояние чекбокса при инициализации
+            // Загружаем состояние чекбокса
             LoadCheckboxState();
         }
 
@@ -34,10 +31,8 @@ namespace FlySafe
         // Обработчик для события "Чекбокс отмечен"
         private void AlwaysOnTopCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            // После того как шаблон чекбокса был загружен, мы ищем элемент "CheckMark"
+            // Показываем галочку
             var checkMark = (System.Windows.Shapes.Path)AlwaysOnTopCheckBox.Template.FindName("CheckMark", AlwaysOnTopCheckBox);
-
-            // Если элемент найден, то меняем его прозрачность
             if (checkMark != null)
             {
                 checkMark.Opacity = 1;  // Показываем галочку
@@ -50,10 +45,8 @@ namespace FlySafe
         // Обработчик для события "Чекбокс снят"
         private void AlwaysOnTopCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            // После того как шаблон чекбокса был загружен, мы ищем элемент "CheckMark"
+            // Скрываем галочку
             var checkMark = (System.Windows.Shapes.Path)AlwaysOnTopCheckBox.Template.FindName("CheckMark", AlwaysOnTopCheckBox);
-
-            // Если элемент найден, то меняем его прозрачность
             if (checkMark != null)
             {
                 checkMark.Opacity = 0;  // Скрываем галочку
@@ -71,6 +64,12 @@ namespace FlySafe
                 using (StreamWriter writer = new StreamWriter(ConfigFilePath))
                 {
                     writer.WriteLine($"AlwaysOnTop={isChecked}");
+                }
+
+                // Сообщаем главному окну об изменении состояния
+                if (Owner is MainWindow mainWindow)
+                {
+                    mainWindow.Topmost = isChecked;
                 }
             }
             catch (Exception ex)

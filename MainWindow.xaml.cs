@@ -1,14 +1,59 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 
 namespace FlySafe
 {
     public partial class MainWindow : Window
     {
+        private const string ConfigFilePath = "settings.cfg"; // Путь к файлу настроек
+
         public MainWindow()
         {
             InitializeComponent();
-            // Устанавливаем начальную позицию окна в центре экрана
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            // Загружаем состояние окна "Поверх всех окон" из файла настроек
+            LoadWindowState();
+
+            // Обработчик для перетаскивания окна
+            this.MouseLeftButtonDown += Grid_MouseLeftButtonDown;
+        }
+
+        // Загружаем состояние окна "Поверх всех окон"
+        private void LoadWindowState()
+        {
+            if (File.Exists(ConfigFilePath))
+            {
+                try
+                {
+                    // Читаем файл и ищем строку, начинающуюся с "AlwaysOnTop="
+                    string[] lines = File.ReadAllLines(ConfigFilePath);
+                    foreach (var line in lines)
+                    {
+                        if (line.StartsWith("AlwaysOnTop="))
+                        {
+                            // Парсим значение после "AlwaysOnTop="
+                            string value = line.Substring("AlwaysOnTop=".Length).Trim();
+                            bool isAlwaysOnTop = false;
+
+                            if (bool.TryParse(value, out isAlwaysOnTop))
+                            {
+                                // Если настройка включена, ставим окно поверх всех
+                                this.Topmost = isAlwaysOnTop;
+                            }
+                            break; // Прерываем цикл после нахождения строки с настройкой
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при загрузке настроек: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Файл настроек не найден.");
+            }
         }
 
         // Обработчик для перетаскивания окна
