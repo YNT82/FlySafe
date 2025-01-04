@@ -7,7 +7,7 @@ namespace FlySafe
 {
     public partial class NewWindow : Window
     {
-        private const string ConfigFilePath = "settings.cfg"; // Путь к файлу настроек
+        private const string ConfigFilePath = "Settings.cfg"; // Путь к файлу настроек
 
         public NewWindow()
         {
@@ -17,7 +17,7 @@ namespace FlySafe
 
         private void NewWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            // Загружаем состояние чекбокса
+            // Загружаем состояние чекбокса AlwaysOnTop
             LoadCheckboxState();
         }
 
@@ -28,7 +28,7 @@ namespace FlySafe
             this.Close();
         }
 
-        // Обработчик для события "Чекбокс отмечен"
+        // Обработчик для события "Чекбокс AlwaysOnTop отмечен"
         private void AlwaysOnTopCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             // Показываем галочку
@@ -38,11 +38,11 @@ namespace FlySafe
                 checkMark.Opacity = 1;  // Показываем галочку
             }
 
-            // Сохраняем состояние чекбокса
+            // Сохраняем состояние чекбокса AlwaysOnTop
             SaveCheckboxState(true);
         }
 
-        // Обработчик для события "Чекбокс снят"
+        // Обработчик для события "Чекбокс AlwaysOnTop снят"
         private void AlwaysOnTopCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             // Скрываем галочку
@@ -52,11 +52,11 @@ namespace FlySafe
                 checkMark.Opacity = 0;  // Скрываем галочку
             }
 
-            // Сохраняем состояние чекбокса
+            // Сохраняем состояние чекбокса AlwaysOnTop
             SaveCheckboxState(false);
         }
 
-        // Сохранение состояния чекбокса в файл
+        // Сохранение состояния чекбокса AlwaysOnTop в файл
         private void SaveCheckboxState(bool isChecked)
         {
             try
@@ -78,7 +78,7 @@ namespace FlySafe
             }
         }
 
-        // Загрузка состояния чекбокса из файла
+        // Загрузка состояния чекбокса AlwaysOnTop из файла
         private void LoadCheckboxState()
         {
             if (File.Exists(ConfigFilePath))
@@ -97,7 +97,7 @@ namespace FlySafe
 
                             if (bool.TryParse(value, out isChecked))
                             {
-                                // Устанавливаем состояние чекбокса
+                                // Устанавливаем состояние чекбокса AlwaysOnTop
                                 AlwaysOnTopCheckBox.IsChecked = isChecked;
 
                                 // После того как шаблон был загружен, ищем элемент "CheckMark"

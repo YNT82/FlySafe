@@ -5,7 +5,7 @@ namespace FlySafe
 {
     public partial class MainWindow : Window
     {
-        private const string ConfigFilePath = "settings.cfg"; // Путь к файлу настроек
+        private const string ConfigFilePath = "Settings.cfg"; // Путь к файлу настроек
 
         public MainWindow()
         {
