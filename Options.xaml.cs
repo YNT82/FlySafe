@@ -1,21 +1,23 @@
 ﻿using System.IO;
+using System.Reflection.Emit;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 
 namespace FlySafe
 {
-    public partial class NewWindow : Window
+    public partial class Options : Window
     {
         private const string ConfigFilePath = "Settings.cfg"; // Путь к файлу настроек
 
-        public NewWindow()
+        public Options()
         {
             InitializeComponent();
-            this.Loaded += NewWindow_Loaded;
+            UpdateLabelWithVersion();
+            this.Loaded += Options_Loaded;
         }
 
-        private void NewWindow_Loaded(object sender, RoutedEventArgs e)
+        private void Options_Loaded(object sender, RoutedEventArgs e)
         {
             // Загружаем состояние чекбокса AlwaysOnTop
             LoadCheckboxState();
@@ -121,5 +123,32 @@ namespace FlySafe
                 MessageBox.Show("Файл настроек не найден.");
             }
         }
+
+        // Загрузка версии из файла
+        private void UpdateLabelWithVersion()
+        {
+            string versionFile = "Version.txt";
+            string fileContent = string.Empty;
+
+            // Проверка существования файла и чтение содержимого
+            if (File.Exists(versionFile))
+            {
+                fileContent = File.ReadAllText(versionFile);
+            }
+            else
+            {
+                fileContent = "Not found";
+            }
+
+            // Просто объединяем строку
+            string combinedText = "Version: " + fileContent;
+
+            // Обновляем Label
+            VersionLabel.Content = combinedText;
+
+            // При необходимости можно обновить визуальное отображение
+            VersionLabel.InvalidateVisual();
+        }
+
     }
 }

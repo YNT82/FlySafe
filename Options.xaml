@@ -1,7 +1,7 @@
-﻿<Window x:Class="FlySafe.NewWindow"
+﻿<Window x:Class="FlySafe.Options"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="New Window"
+        Title="Options"
         Background="#2C2F33"
         Width="350" Height="110"
         WindowStyle="None" ResizeMode="NoResize"
@@ -35,5 +35,6 @@
                 </ControlTemplate>
             </CheckBox.Template>
         </CheckBox>
+        <Label x:Name="VersionLabel" Content="" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top" FontFamily="Roboto Mono" Foreground="White" FontSize="10"/>
     </Grid>
 </Window>
