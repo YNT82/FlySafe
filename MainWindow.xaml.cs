@@ -195,14 +195,7 @@ namespace FlySafe
 
         private void CautionBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Вызов функции изменения цвета WarningBtn
-            ButtonStyleHelper.SetWarningButtonColor("#FF0000");
-            // Вызов функции изменения цвета CautionBtn
-            ButtonStyleHelper.SetCautionButtonColor("#FF8C00");
-            LabelStyleHelper.SetFlightControlLabelColor("#FF8C00");
-            LabelStyleHelper.SetFuelLabelColor("#FF8C00");
-            LabelStyleHelper.SetAntiIceLabelColor("#FF8C00");
-            LabelStyleHelper.SetApuLabelColor("#FF8C00");
+
         }
 
         private void WarningBtn_Click(object sender, RoutedEventArgs e)
