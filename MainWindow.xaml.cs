@@ -2,12 +2,14 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media;
+using System.Timers;
 
 namespace FlySafe
 {
     public partial class MainWindow : Window
     {
         private const string ConfigFilePath = "Settings.cfg"; // Путь к файлу настроек
+        private System.Timers.Timer connectionTimer;
 
         // Импортируем функцию для открытия SimConnect
         [DllImport("SimConnect.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
@@ -102,7 +104,34 @@ namespace FlySafe
         {
             ConnectToSim();
         }
+        // Первая попытка подключения сразу после загрузки
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Настраиваем таймер на повторную попытку подключения каждые 10 секунд
+            connectionTimer = new System.Timers.Timer(10000); // Интервал в миллисекундах (10 секунд)
+            connectionTimer.Elapsed += AttemptConnection;
+            connectionTimer.AutoReset = true;
+            connectionTimer.Start();
 
+            // Первая попытка подключения сразу после загрузки
+            AttemptConnection(this, null);
+        }
+        // Повторные попытки подключения
+        private void AttemptConnection(object sender, ElapsedEventArgs? e)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                ConnectToSim();
+
+                // Проверяем статус соединения
+                if (hSimConnect != IntPtr.Zero)
+                {
+                    // Соединение успешно — останавливаем таймер
+                    connectionTimer.Stop();
+                    connectionTimer.Dispose();
+                }
+            });
+        }
         // Функция для подключения к симулятору
         private void ConnectToSim()
         {
