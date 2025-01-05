@@ -189,5 +189,12 @@ namespace FlySafe
             }
         }
 
+        private void CautionBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Вызов функции изменения цвета CautionBtn
+            ButtonStyleHelper.SetWarningButtonColor("#FF0000");
+            // Вызов функции изменения цвета WarningBtn
+            ButtonStyleHelper.SetCautionButtonColor("#FF0000");
+        }
     }
 }
