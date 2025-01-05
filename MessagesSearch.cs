@@ -95,13 +95,27 @@ public class Message
 
     [JsonProperty("check_type")]
     public string CheckType { get; set; }
+
+    // Конструктор для инициализации обязательных полей
+    public Message(string messageContent, string checkType)
+    {
+        MessageContent = messageContent ?? throw new ArgumentNullException(nameof(messageContent));
+        CheckType = checkType ?? throw new ArgumentNullException(nameof(checkType));
+    }
 }
 
 public class MessagesData
 {
     [JsonProperty("Cautions")]
-    public List<Message> Cautions { get; set; }
+    public List<Message> Cautions { get; set; } = new List<Message>();  // Инициализация по умолчанию
 
     [JsonProperty("Warnings")]
-    public List<Message> Warnings { get; set; }
+    public List<Message> Warnings { get; set; } = new List<Message>();  // Инициализация по умолчанию
+
+    // Конструктор для инициализации обязательных полей
+    public MessagesData()
+    {
+        Cautions = Cautions ?? new List<Message>();  // Инициализация по умолчанию
+        Warnings = Warnings ?? new List<Message>();  // Инициализация по умолчанию
+    }
 }
