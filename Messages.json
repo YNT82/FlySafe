@@ -1,0 +1,388 @@
+{
+  "phases": {
+    "Pre-flight": [
+      {
+        "phase": "Unknown",
+        "checks": []
+      },
+      {
+        "phase": "Pre-flight Preparation",
+        "checks": [
+          {
+            "code": "404",
+            "description": "IFR"
+          },
+          {
+            "code": "500",
+            "description": "Simbrief type does not match flight type"
+          },
+          {
+            "code": "501",
+            "description": "Simbrief units do not match flight units"
+          },
+          {
+            "code": "502",
+            "description": "Fuel quantity is insufficient"
+          },
+          {
+            "code": "519",
+            "description": "MIFR"
+          },
+          {
+            "code": "520",
+            "description": "LIFR"
+          },
+          {
+            "code": "521",
+            "description": "Icing conditions"
+          }
+        ]
+      },
+      {
+        "phase": "Taxiing",
+        "checks": [
+          {
+            "code": "400",
+            "description": "GPU still connected"
+          },
+          {
+            "code": "521",
+            "description": "Icing conditions"
+          }
+        ]
+      }
+    ],
+    "Flight": [
+      {
+        "phase": "Takeoff",
+        "checks": [
+          {
+            "code": "401",
+            "description": "XPNDR is off"
+          },
+          {
+            "code": "402",
+            "description": "Landing lights"
+          },
+          {
+            "code": "503",
+            "description": "Wrong runway is used"
+          },
+          {
+            "code": "504",
+            "description": "APU still running"
+          },
+          {
+            "code": "505",
+            "description": "Baro not set"
+          },
+          {
+            "code": "506",
+            "description": "Altitude not set"
+          },
+          {
+            "code": "508",
+            "description": "Packs off"
+          },
+          {
+            "code": "509",
+            "description": "Flaps not in TO config"
+          },
+          {
+            "code": "511",
+            "description": "Trim setting incorrect"
+          },
+          {
+            "code": "514",
+            "description": "Autobrake not armed"
+          }
+        ]
+      },
+      {
+        "phase": "Climbing",
+        "checks": [
+          {
+            "code": "402",
+            "description": "Landing lights"
+          },
+          {
+            "code": "515",
+            "description": "Overspeed"
+          },
+          {
+            "code": "516",
+            "description": "Landing gear retract"
+          },
+          {
+            "code": "518",
+            "description": "Pilot fell asleep"
+          },
+          {
+            "code": "521",
+            "description": "Icing conditions"
+          }
+        ]
+      },
+      {
+        "phase": "Cruise",
+        "checks": [
+          {
+            "code": "403",
+            "description": "Flaps extended during cruise"
+          },
+          {
+            "code": "515",
+            "description": "Overspeed"
+          },
+          {
+            "code": "518",
+            "description": "Pilot fell asleep"
+          },
+          {
+            "code": "521",
+            "description": "Icing conditions"
+          }
+        ]
+      },
+      {
+        "phase": "Descent",
+        "checks": [
+          {
+            "code": "402",
+            "description": "Landing lights"
+          },
+          {
+            "code": "515",
+            "description": "Overspeed"
+          },
+          {
+            "code": "518",
+            "description": "Pilot fell asleep"
+          },
+          {
+            "code": "521",
+            "description": "Icing conditions"
+          }
+        ]
+      },
+      {
+        "phase": "Approach",
+        "checks": [
+          {
+            "code": "505",
+            "description": "Baro not set"
+          },
+          {
+            "code": "515",
+            "description": "Overspeed"
+          },
+          {
+            "code": "518",
+            "description": "Pilot fell asleep"
+          },
+          {
+            "code": "521",
+            "description": "Icing conditions"
+          }
+        ]
+      },
+      {
+        "phase": "Landing",
+        "checks": [
+          {
+            "code": "510",
+            "description": "Flaps not in landing config"
+          },
+          {
+            "code": "512",
+            "description": "Spoilers not armed"
+          },
+          {
+            "code": "514",
+            "description": "Autobrake not armed"
+          },
+          {
+            "code": "517",
+            "description": "Landing gear extend"
+          },
+          {
+            "code": "521",
+            "description": "Icing conditions"
+          },
+          {
+            "code": "522",
+            "description": "Crosswind"
+          },
+          {
+            "code": "523",
+            "description": "Tailwind"
+          },
+          {
+            "code": "524",
+            "description": "Wind shear"
+          }
+        ]
+      }
+    ],
+    "Post-flight": [
+      {
+        "phase": "Post-flight",
+        "checks": []
+      }
+    ]
+  },
+  "Cautions": [
+    {
+      "code": "400",
+      "message": "GPU still connected",
+      "check_type": "Systems"
+    },
+    {
+      "code": "401",
+      "message": "XPNDR is off",
+      "check_type": "Systems"
+    },
+    {
+      "code": "402",
+      "message": "Landing lights",
+      "check_type": "Systems"
+    },
+    {
+      "code": "403",
+      "message": "Flaps extended during cruise",
+      "check_type": "Flight control"
+    },
+    {
+      "code": "404",
+      "message": "IFR",
+      "check_type": "Weather"
+    }
+  ],
+  "Warnings": [
+    {
+      "code": "500",
+      "message": "Simbrief type does not match flight type",
+      "check_type": "Flight plan"
+    },
+    {
+      "code": "501",
+      "message": "Simbrief units do not match flight units",
+      "check_type": "Flight plan"
+    },
+    {
+      "code": "502",
+      "message": "Fuel quantity is insufficient",
+      "check_type": "Flight plan"
+    },
+    {
+      "code": "503",
+      "message": "Wrong runway is used",
+      "check_type": "Flight plan"
+    },
+    {
+      "code": "504",
+      "message": "APU still running",
+      "check_type": "Systems"
+    },
+    {
+      "code": "505",
+      "message": "Baro not set",
+      "check_type": "Systems"
+    },
+    {
+      "code": "506",
+      "message": "Altitude not set",
+      "check_type": "Systems"
+    },
+    {
+      "code": "507",
+      "message": "Packs off",
+      "check_type": "Systems"
+    },
+    {
+      "code": "508",
+      "message": "Flaps not in TO config",
+      "check_type": "Flight control"
+    },
+    {
+      "code": "509",
+      "message": "Flaps not in landing config",
+      "check_type": "Flight control"
+    },
+    {
+      "code": "510",
+      "message": "Trim setting incorrect",
+      "check_type": "Flight control"
+    },
+    {
+      "code": "511",
+      "message": "Spoilers not armed",
+      "check_type": "Flight control"
+    },
+    {
+      "code": "512",
+      "message": "Spoilers extended",
+      "check_type": "Flight control"
+    },
+    {
+      "code": "513",
+      "message": "Autobrake not armed",
+      "check_type": "Flight control"
+    },
+    {
+      "code": "514",
+      "message": "Overspeed",
+      "check_type": "Flight control"
+    },
+    {
+      "code": "515",
+      "message": "Landing gear retract",
+      "check_type": "Flight control"
+    },
+    {
+      "code": "516",
+      "message": "Landing gear extend",
+      "check_type": "Flight control"
+    },
+    {
+      "code": "517",
+      "message": "Pilot fell asleep",
+      "check_type": "Flight control"
+    },
+    {
+      "code": "518",
+      "message": "MIFR",
+      "check_type": "Weather"
+    },
+    {
+      "code": "519",
+      "message": "LIFR",
+      "check_type": "Weather"
+    },
+    {
+      "code": "520",
+      "message": "Icing conditions",
+      "check_type": "Weather"
+    },
+    {
+      "code": "521",
+      "message": "Crosswind",
+      "check_type": "Weather"
+    },
+    {
+      "code": "522",
+      "message": "Tailwind",
+      "check_type": "Weather"
+    },
+    {
+      "code": "523",
+      "message": "Wind shear",
+      "check_type": "Weather"
+    },
+	{
+      "code": "524",
+      "message": "ECAM MESSAGE TEST",
+      "check_type": "Weather"
+    }
+  ]
+}

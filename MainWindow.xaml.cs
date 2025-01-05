@@ -1,11 +1,23 @@
 ﻿using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Media;
 
 namespace FlySafe
 {
     public partial class MainWindow : Window
     {
         private const string ConfigFilePath = "Settings.cfg"; // Путь к файлу настроек
+
+        // Импортируем функцию для открытия SimConnect
+        [DllImport("SimConnect.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        private static extern int SimConnect_Open(ref IntPtr hSimConnect, string szName, IntPtr hwnd, uint dwNotifyFlags, uint dwCallback, uint dwUserData);
+
+        // Импортируем функцию для закрытия SimConnect
+        [DllImport("SimConnect.dll", CallingConvention = CallingConvention.StdCall)]
+        private static extern int SimConnect_Close(IntPtr hSimConnect);
+
+        private IntPtr hSimConnect = IntPtr.Zero;
 
         public MainWindow()
         {
@@ -84,5 +96,55 @@ namespace FlySafe
             // Показываем окно как модальное
             Options.ShowDialog();
         }
+
+        // Кнопка Warning
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ConnectToSim();
+        }
+
+        // Функция для подключения к симулятору
+        private void ConnectToSim()
+        {
+            if (hSimConnect != IntPtr.Zero)
+            {
+                ConnectLabel.Content = "Ready";
+                ConnectLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#00C800"));
+                return;
+            }
+
+            try
+            {
+                // Пытаемся установить соединение с SimConnect
+                int result = SimConnect_Open(ref hSimConnect, "WPF SimConnect", IntPtr.Zero, 0, 0, 0);
+                if (result == 0) // 0 — это успешный код подключения
+                {
+                    ConnectLabel.Content = "Ready";
+                    ConnectLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#00C800"));
+                }
+                else
+                {
+                    ConnectLabel.Content = $"Error code: {result}";
+                    ConnectLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0000"));
+                }
+            }
+            catch (Exception ex)
+            {
+                ConnectLabel.Content = $"Exception: {ex.Message}";
+                ConnectLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0000"));
+            }
+        }
+        // Функция закрытия соединения
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            if (hSimConnect != IntPtr.Zero)
+            {
+                SimConnect_Close(hSimConnect);
+                hSimConnect = IntPtr.Zero;
+            }
+        }
+
     }
 }
