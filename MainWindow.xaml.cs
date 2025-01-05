@@ -9,6 +9,7 @@ namespace FlySafe
     public partial class MainWindow : Window
     {
         private const string ConfigFilePath = "Settings.cfg"; // Путь к файлу настроек
+        private System.Timers.Timer initialDelayTimer;
         private System.Timers.Timer connectionTimer;
 
         // Импортируем функцию для открытия SimConnect
@@ -104,18 +105,33 @@ namespace FlySafe
         {
             ConnectToSim();
         }
-        // Первая попытка подключения сразу после загрузки
+
+        // Таймер начальной задержки
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // Настраиваем таймер на повторную попытку подключения каждые 10 секунд
-            connectionTimer = new System.Timers.Timer(10000); // Интервал в миллисекундах (10 секунд)
+            initialDelayTimer = new System.Timers.Timer(5000); // Задержка в 5 секунд
+            initialDelayTimer.Elapsed += StartConnectionTimer;
+            initialDelayTimer.AutoReset = false; // Однократное срабатывание
+            initialDelayTimer.Start();
+        }
+        // Первая попытка подключения
+
+        private void StartConnectionTimer(object sender, ElapsedEventArgs e)
+        {
+            // Остановка таймера начальной задержки
+            initialDelayTimer.Stop();
+            initialDelayTimer.Dispose();
+
+            // Настройка основного таймера на попытки подключения каждые 10 секунд
+            connectionTimer = new System.Timers.Timer(10000);
             connectionTimer.Elapsed += AttemptConnection;
             connectionTimer.AutoReset = true;
             connectionTimer.Start();
 
-            // Первая попытка подключения сразу после загрузки
+            // Первая попытка подключения
             AttemptConnection(this, null);
         }
+
         // Повторные попытки подключения
         private void AttemptConnection(object sender, ElapsedEventArgs? e)
         {
@@ -123,15 +139,15 @@ namespace FlySafe
             {
                 ConnectToSim();
 
-                // Проверяем статус соединения
+                // Если соединение успешно, останавливаем основной таймер
                 if (hSimConnect != IntPtr.Zero)
                 {
-                    // Соединение успешно — останавливаем таймер
                     connectionTimer.Stop();
                     connectionTimer.Dispose();
                 }
             });
         }
+
         // Функция для подключения к симулятору
         private void ConnectToSim()
         {
@@ -153,7 +169,7 @@ namespace FlySafe
                 }
                 else
                 {
-                    ConnectLabel.Content = $"Error code: {result}";
+                    ConnectLabel.Content = $"Simulator not running"; //{result}
                     ConnectLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0000"));
                 }
             }
