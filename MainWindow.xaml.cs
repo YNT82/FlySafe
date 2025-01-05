@@ -169,8 +169,8 @@ namespace FlySafe
                 }
                 else
                 {
-                    ConnectLabel.Content = $"Simulator not running"; //{result}
-                    ConnectLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0000"));
+                    ConnectLabel.Content = $"Waiting for Simulator"; //{result}
+                    ConnectLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF8C00"));
                 }
             }
             catch (Exception ex)

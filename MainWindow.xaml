@@ -31,6 +31,6 @@
         <Label Content="FUEL" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="580,70,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Content="ANTI-ICE" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="690,10,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Content="APU" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="690,70,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="ConnectLabel" HorizontalContentAlignment="Right" Content="Waiting for simulator..." HorizontalAlignment="Left" Margin="395,11,0,0" VerticalAlignment="Top" FontFamily="Roboto Mono" Foreground="White" Width="174" FontSize="10"/>
+        <Label x:Name="ConnectLabel" HorizontalContentAlignment="Right" Content="" HorizontalAlignment="Left" Margin="395,11,0,0" VerticalAlignment="Top" Foreground="#FF8C00" FontFamily="Roboto Mono" Width="174" FontSize="10"/>
     </Grid>
 </Window>
