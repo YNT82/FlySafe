@@ -1,20 +1,16 @@
 ﻿using System.IO;
 using System.Runtime.InteropServices;
+using System.Timers;
 using System.Windows;
 using System.Windows.Media;
-using System.Timers;
-using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Windows.Media.Media3D;
 
 namespace FlySafe
 {
     public partial class MainWindow : Window
     {
         private const string ConfigFilePath = "Settings.cfg"; // Путь к файлу настроек
-        private System.Timers.Timer initialDelayTimer;
-        private System.Timers.Timer connectionTimer;
+        private System.Timers.Timer? initialDelayTimer;
+        private System.Timers.Timer? connectionTimer;
 
         // Импортируем функцию для открытия SimConnect
         [DllImport("SimConnect.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
@@ -117,8 +113,8 @@ namespace FlySafe
         private void StartConnectionTimer(object sender, ElapsedEventArgs e)
         {
             // Остановка таймера начальной задержки
-            initialDelayTimer.Stop();
-            initialDelayTimer.Dispose();
+            initialDelayTimer?.Stop();
+            initialDelayTimer?.Dispose();
 
             // Настройка основного таймера на попытки подключения каждые 10 секунд
             connectionTimer = new System.Timers.Timer(10000);
@@ -140,8 +136,8 @@ namespace FlySafe
                 // Если соединение успешно, останавливаем основной таймер
                 if (hSimConnect != IntPtr.Zero)
                 {
-                    connectionTimer.Stop();
-                    connectionTimer.Dispose();
+                    connectionTimer?.Stop();
+                    connectionTimer?.Dispose();
                 }
             });
         }
