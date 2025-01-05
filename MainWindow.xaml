@@ -19,7 +19,7 @@
 
     <Grid Background="#2C2F33" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
         <!-- Кнопка WARNING -->
-        <Button x:Name="WarningBtn" Content="WARNING" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" Margin="10,10,0,0" Foreground="#800000" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" Background="#2C2F33" BorderBrush="Black" BorderThickness="1" FontSize="18"/>
+        <Button x:Name="WarningBtn" Content="WARNING" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" Margin="10,10,0,0" Foreground="#800000" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" Background="#2C2F33" BorderBrush="Black" BorderThickness="1" FontSize="18" Click="WarningBtn_Click"/>
         <!-- Кнопка CAUTION -->
         <Button x:Name="CautionBtn" Content="CAUTION" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" Margin="10,70,0,0" Foreground="#806000" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" Background="#2C2F33" BorderBrush="Black" BorderThickness="1" FontSize="18" Click="CautionBtn_Click"/>
 

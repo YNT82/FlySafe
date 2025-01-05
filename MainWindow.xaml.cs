@@ -3,6 +3,10 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media;
 using System.Timers;
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Windows.Media.Media3D;
 
 namespace FlySafe
 {
@@ -199,6 +203,54 @@ namespace FlySafe
             LabelStyleHelper.SetFuelLabelColor("#FF8C00");
             LabelStyleHelper.SetAntiIceLabelColor("#FF8C00");
             LabelStyleHelper.SetApuLabelColor("#FF8C00");
+        }
+
+        private void WarningBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Строки для поиска
+            List<string> searchStrings = new List<string>
+            {
+                "Wind shear",
+                "Landing lights",
+                "Spoilers not armed",
+                "Simbrief type does not match flight type"
+            };
+
+            // Списки для результатов
+            List<string> messages;
+            List<string> checkTypes;
+            List<string> sections;
+
+            // Вызов функции поиска
+            MessageSearcher.SearchMessages(searchStrings, out messages, out checkTypes, out sections);
+
+            // Путь к файлу для сохранения результатов
+            string resultFilePath = "result.txt";
+
+            // Открытие/создание файла и запись результата
+            using (StreamWriter writer = new StreamWriter(resultFilePath, false))
+            {
+                writer.WriteLine("Messages:");
+                foreach (var message in messages)
+                {
+                    writer.WriteLine(message);
+                }
+
+                writer.WriteLine("\nCheck Types:");
+                foreach (var checkType in checkTypes)
+                {
+                    writer.WriteLine(checkType);
+                }
+
+                writer.WriteLine("\nSections:");
+                foreach (var section in sections)
+                {
+                    writer.WriteLine(section);
+                }
+            }
+
+            // Информация об успешном завершении
+            MessageBox.Show("Результаты сохранены в файл result.txt");
         }
     }
 }
