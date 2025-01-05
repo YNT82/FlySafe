@@ -17,44 +17,59 @@ public class MessageSearcher
         var jsonData = File.ReadAllText("Messages.json");  // Убедитесь, что файл в правильном месте
         var data = JsonConvert.DeserializeObject<MessagesData>(jsonData);
 
-        // Проходим по всем строкам для поиска
-        foreach (var searchString in searchStrings)
+        // Проверяем, что объект data не равен null, а также что списки Cautions и Warnings тоже не равны null
+        if (data != null)
         {
-            // Поиск по разделу Cautions
-            foreach (var caution in data.Cautions)
+            // Проходим по всем строкам для поиска
+            foreach (var searchString in searchStrings)
             {
-                if (caution.MessageContent != null && caution.MessageContent.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                // Поиск по разделу Cautions, если Cautions не null
+                if (data.Cautions != null)
                 {
-                    // Добавляем в списки только уникальные значения
-                    if (!messages.Contains(caution.MessageContent))
+                    foreach (var caution in data.Cautions)
                     {
-                        messages.Add(caution.MessageContent);
-                        checkTypes.Add(caution.CheckType);
-                        sections.Add("Cautions");
+                        if (caution.MessageContent != null && caution.MessageContent.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                        {
+                            // Добавляем в списки только уникальные значения
+                            if (!messages.Contains(caution.MessageContent))
+                            {
+                                messages.Add(caution.MessageContent);
+                                checkTypes.Add(caution.CheckType);
+                                sections.Add("Cautions");
+                            }
+                        }
+                    }
+                }
+
+                // Поиск по разделу Warnings, если Warnings не null
+                if (data.Warnings != null)
+                {
+                    foreach (var warning in data.Warnings)
+                    {
+                        if (warning.MessageContent != null && warning.MessageContent.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                        {
+                            // Добавляем в списки только уникальные значения
+                            if (!messages.Contains(warning.MessageContent))
+                            {
+                                messages.Add(warning.MessageContent);
+                                checkTypes.Add(warning.CheckType);
+                                sections.Add("Warnings");
+                            }
+                        }
                     }
                 }
             }
 
-            // Поиск по разделу Warnings
-            foreach (var warning in data.Warnings)
-            {
-                if (warning.MessageContent != null && warning.MessageContent.Contains(searchString, StringComparison.OrdinalIgnoreCase))
-                {
-                    // Добавляем в списки только уникальные значения
-                    if (!messages.Contains(warning.MessageContent))
-                    {
-                        messages.Add(warning.MessageContent);
-                        checkTypes.Add(warning.CheckType);
-                        sections.Add("Warnings");
-                    }
-                }
-            }
+            // Убираем дубликаты в списках, если они есть
+            RemoveDuplicates(ref messages);
+            RemoveDuplicates(ref checkTypes);
+            RemoveDuplicates(ref sections);
         }
-
-        // Убираем дубликаты в списках, если они есть
-        RemoveDuplicates(ref messages);
-        RemoveDuplicates(ref checkTypes);
-        RemoveDuplicates(ref sections);
+        else
+        {
+            // Если data равно null, выбрасываем исключение или выполняем соответствующие действия
+            throw new InvalidOperationException("Data is null. Unable to search messages.");
+        }
     }
 
     // Вспомогательная функция для удаления дубликатов
