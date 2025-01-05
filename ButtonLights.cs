@@ -11,7 +11,7 @@ public static class ButtonStyleHelper
     {
         if (App.Current.MainWindow.FindName("WarningBtn") is System.Windows.Controls.Button warningButton)
         {
-            warningButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0000"));
+            warningButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorCode));
         }
     }
 
@@ -23,7 +23,7 @@ public static class ButtonStyleHelper
     {
         if (App.Current.MainWindow.FindName("CautionBtn") is System.Windows.Controls.Button cautionButton)
         {
-            cautionButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF8C00"));
+            cautionButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorCode));
         }
     }
 }
