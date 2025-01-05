@@ -103,7 +103,7 @@ namespace FlySafe
         // Кнопка Warning
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ConnectToSim();
+
         }
 
         // Таймер начальной задержки
@@ -148,6 +148,9 @@ namespace FlySafe
             });
         }
 
+        // Проверка состояния соединения
+        // Восстановление соединения
+
         // Функция для подключения к симулятору
         private void ConnectToSim()
         {
@@ -179,6 +182,7 @@ namespace FlySafe
                 ConnectLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0000"));
             }
         }
+
         // Функция закрытия соединения
         protected override void OnClosed(EventArgs e)
         {
