@@ -100,12 +100,6 @@ namespace FlySafe
             Options.ShowDialog();
         }
 
-        // Кнопка Warning
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         // Таймер начальной задержки
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

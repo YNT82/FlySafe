@@ -19,9 +19,9 @@
 
     <Grid Background="#2C2F33" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
         <!-- Кнопка WARNING -->
-        <Button Content="WARNING" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" Margin="10,10,0,0" Foreground="#FF0000" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" Background="#2C2F33" BorderBrush="Black" BorderThickness="1" FontSize="18" Click="Button_Click"/>
+        <Button x:Name="WarningBtn" Content="WARNING" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" Margin="10,10,0,0" Foreground="#FF0000" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" Background="#2C2F33" BorderBrush="Black" BorderThickness="1" FontSize="18"/>
         <!-- Кнопка CAUTION -->
-        <Button Content="CAUTION" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" Margin="10,70,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" Background="#2C2F33" BorderBrush="Black" BorderThickness="1" FontSize="18"/>
+        <Button x:Name="CautionBtn" Content="CAUTION" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" Margin="10,70,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" Background="#2C2F33" BorderBrush="Black" BorderThickness="1" FontSize="18"/>
 
         <!-- Лейбл ECAM с правым кликом -->
         <Label x:Name="ECAMLabel" Content="ECAM MESSAGE TEST" HorizontalAlignment="Left" VerticalAlignment="Top" Width="350" Height="110" Margin="220,10,10,0" FontFamily="{StaticResource RobotoMonoFontFamily}" Background="#2C2F33" Foreground="White" BorderBrush="Black" BorderThickness="1" MouseRightButtonDown="ECAMLabel_MouseRightButtonDown"/>
