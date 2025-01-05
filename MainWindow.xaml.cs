@@ -110,7 +110,7 @@ namespace FlySafe
         }
         // Первая попытка подключения
 
-        private void StartConnectionTimer(object sender, ElapsedEventArgs e)
+        private void StartConnectionTimer(object? sender, ElapsedEventArgs e)
         {
             // Остановка таймера начальной задержки
             initialDelayTimer?.Stop();
@@ -127,7 +127,7 @@ namespace FlySafe
         }
 
         // Повторные попытки подключения
-        private void AttemptConnection(object sender, ElapsedEventArgs? e)
+        private void AttemptConnection(object? sender, ElapsedEventArgs? e)
         {
             Dispatcher.Invoke(() =>
             {
