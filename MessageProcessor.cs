@@ -68,5 +68,26 @@ public class MessageProcessor
                 LabelStyleHelper.SetAntiIceLabelColor("#806000");
                 break;
         }
+
+        // Окрашиваем сообщения в зависимости от секции
+        for (int i = 0; i < messages.Count; i++)
+        {
+            string section = sections.Count > i ? sections[i] : ""; // Безопасно получаем секцию для сообщения
+            string message = messages[i];
+
+            // Применяем цвета в зависимости от секции
+            if (section == "Warnings")
+            {
+                messages[i] = $"Warning: {message}"; // Мы добавляем текст для понимания, что это Warning
+            }
+            else if (section == "Cautions")
+            {
+                messages[i] = $"Caution: {message}"; // Аналогично для Caution
+            }
+            else
+            {
+                messages[i] = $"Info: {message}";  // Для других сообщений
+            }
+        }
     }
 }

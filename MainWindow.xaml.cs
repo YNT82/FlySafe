@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Timers;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
 
@@ -358,11 +359,24 @@ namespace FlySafe
             // Добавляем строки из messages в TextBlock с настройкой цвета
             foreach (var message in messages)
             {
-                // Создаем новый Run с текстом сообщения и цветом, соответствующим логике
-                var newRun = new Run(message)
+                // Создаем новый Run с текстом сообщения
+                Run newRun = new Run(message);
+
+                // Устанавливаем цвет в зависимости от типа сообщения
+                if (message.StartsWith("Warning"))
                 {
-                    Foreground = new SolidColorBrush(Colors.White) // Здесь укажите нужный цвет текста
-                };
+                    newRun.Foreground = new SolidColorBrush(Colors.Red);  // Красный для предупреждений
+                }
+                else if (message.StartsWith("Caution"))
+                {
+                    newRun.Foreground = new SolidColorBrush(Colors.Orange);  // Оранжевый для предостережений
+                }
+                else
+                {
+                    newRun.Foreground = new SolidColorBrush(Colors.White);  // Белый для информационных сообщений
+                }
+
+                // Добавляем Run в TextBlock для отображения
                 ECAM.Inlines.Add(newRun);
                 ECAM.Inlines.Add(new LineBreak());  // Добавляем разрыв строки
             }
