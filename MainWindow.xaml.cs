@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Timers;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Media;
 
 namespace FlySafe
@@ -192,13 +193,15 @@ namespace FlySafe
         private void CautionBtn_Click(object sender, RoutedEventArgs e)
         {
             // Строки для поиска
-            List<string> searchStrings = new List<string>
-             {
-             "Wind shear",
-             "Landing lights",
-             "Spoilers not armed",
-             "Simbrief type does not match flight type"
-            };
+            // Получаем все элементы в TextBlock
+            var runs = ECAM.Inlines.OfType<Run>();
+
+            // Составляем список строк, извлекая текст из каждого элемента
+            List<string> searchStrings = new List<string>();
+            foreach (var run in runs)
+            {
+                searchStrings.Add(run.Text);
+            }
 
             // Списки для результатов
             List<string> messages;
@@ -239,13 +242,15 @@ namespace FlySafe
         private void WarningBtn_Click(object sender, RoutedEventArgs e)
         {
             // Строки для поиска
-            List<string> searchStrings = new List<string>
-             {
-             "Wind shear",
-             "Landing lights",
-             "Spoilers not armed",
-             "Simbrief type does not match flight type"
-            };
+            // Получаем все элементы в TextBlock
+            var runs = ECAM.Inlines.OfType<Run>();
+
+            // Составляем список строк, извлекая текст из каждого элемента
+            List<string> searchStrings = new List<string>();
+            foreach (var run in runs)
+            {
+                searchStrings.Add(run.Text);
+            }
 
             // Списки для результатов
             List<string> messages;

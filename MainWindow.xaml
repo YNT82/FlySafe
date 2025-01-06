@@ -35,7 +35,7 @@
         BorderThickness="1">
             <ScrollViewer x:Name="ECAMScrollViewer"
                   Background="Transparent"
-                  VerticalScrollBarVisibility="Auto">
+                  VerticalScrollBarVisibility="Hidden">
                 <TextBlock x:Name="ECAM"
                    FontFamily="{StaticResource RobotoMonoFontFamily}"
                    Foreground="White"
@@ -46,7 +46,9 @@
             <Run Foreground="#FF0000" Text="Simbrief type does not match flight type"/>
             <LineBreak/>
             <Run Foreground="#FF8C00" Text="Landing lights"/>
-            <LineBreak/>       
+            <LineBreak/>
+            <Run Foreground="#FF8C00" Text="XPNDR is OFF"/>
+            <LineBreak/>            
             <Run Foreground="#FF0000" Text="Spoilers not armed"/>
             <LineBreak/>
             <Run Foreground="#FF0000" Text="Wind shear"/>
@@ -54,8 +56,6 @@
                 </TextBlock>
             </ScrollViewer>
         </Border>
-
-
 
         <!-- Лейблы -->
         <Label x:Name="FLT_CNT" Content="FLT CNT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="580,10,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" FontSize="14" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
