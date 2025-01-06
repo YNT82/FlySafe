@@ -81,7 +81,7 @@ namespace FlySafe
         }
 
         // Обработчик правой кнопки мыши на Label ECAM MESSAGE TEST
-        private void ECAMLabel_MouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void ECAM_MouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             // Создаем и показываем новое окно
             Options Options = new Options();
@@ -90,7 +90,7 @@ namespace FlySafe
             Options.Owner = this;
 
             // Получаем позицию лейбла относительно главного окна
-            Point labelPosition = ECAMLabel.TransformToAncestor(this).Transform(new Point(0, 0));
+            Point labelPosition = ECAM.TransformToAncestor(this).Transform(new Point(0, 0));
 
             // Устанавливаем окно точно на позиции лейбла
             Options.Left = this.Left + labelPosition.X;
