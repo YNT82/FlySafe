@@ -4,7 +4,7 @@
     public static void ProcessWarnings(List<string> searchStrings, out List<string> messages, out List<string> checkTypes, out List<string> sections)
     {
         // Вызов функции поиска
-        MessageSearcher.SearchMessages(searchStrings, out messages, out checkTypes, out sections);
+        MessageSearcher.SearchMessages(searchStrings, out messages, out checkTypes, out sections, new List<string> { "Warnings" });
 
         // Проверка наличия секции Warnings и изменение цвета кнопки в зависимости от секции
         switch (sections.Contains("Warnings"))

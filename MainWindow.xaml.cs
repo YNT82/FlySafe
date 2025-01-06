@@ -253,7 +253,7 @@ namespace FlySafe
             List<string> sections;
 
             // Вызов функции обработки сообщений и изменения цветов
-            MessageProcessor.ProcessMessages(searchStrings, out messages, out checkTypes, out sections);
+            WarningProcessor.ProcessWarnings(searchStrings, out messages, out checkTypes, out sections);
 
             // Путь к файлу для сохранения результатов
             string resultFilePath = "WarningsResult.txt";

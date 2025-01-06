@@ -5,8 +5,8 @@ using System.IO;
 
 public class MessageSearcher
 {
-    // Функция для поиска сообщений в JSON файле
-    public static void SearchMessages(List<string> searchStrings, out List<string> messages, out List<string> checkTypes, out List<string> sections)
+    // Функция для поиска сообщений в JSON файле с параметром для указания секций
+    public static void SearchMessages(List<string> searchStrings, out List<string> messages, out List<string> checkTypes, out List<string> sections, List<string>? sectionsToSearch = null)
     {
         // Инициализация списков
         messages = new List<string>();
@@ -17,43 +17,49 @@ public class MessageSearcher
         var jsonData = File.ReadAllText("Messages.json");  // Убедитесь, что файл в правильном месте
         var data = JsonConvert.DeserializeObject<MessagesData>(jsonData);
 
-        // Проверяем, что объект data не равен null, а также что списки Cautions и Warnings тоже не равны null
+        // Проверяем, что объект data не равен null
         if (data != null)
         {
             // Проходим по всем строкам для поиска
             foreach (var searchString in searchStrings)
             {
-                // Поиск по разделу Cautions, если Cautions не null
-                if (data.Cautions != null)
+                // Если секция Cautions указана или секция не указана, ищем в Cautions
+                if (sectionsToSearch == null || sectionsToSearch.Contains("Cautions", StringComparer.OrdinalIgnoreCase))
                 {
-                    foreach (var caution in data.Cautions)
+                    if (data.Cautions != null)
                     {
-                        if (caution.MessageContent != null && caution.MessageContent.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                        foreach (var caution in data.Cautions)
                         {
-                            // Добавляем в списки только уникальные значения
-                            if (!messages.Contains(caution.MessageContent))
+                            if (caution.MessageContent != null && caution.MessageContent.Contains(searchString, StringComparison.OrdinalIgnoreCase))
                             {
-                                messages.Add(caution.MessageContent);
-                                checkTypes.Add(caution.CheckType);
-                                sections.Add("Cautions");
+                                // Добавляем в списки только уникальные значения
+                                if (!messages.Contains(caution.MessageContent))
+                                {
+                                    messages.Add(caution.MessageContent);
+                                    checkTypes.Add(caution.CheckType);
+                                    sections.Add("Cautions");
+                                }
                             }
                         }
                     }
                 }
 
-                // Поиск по разделу Warnings, если Warnings не null
-                if (data.Warnings != null)
+                // Если секция Warnings указана или секция не указана, ищем в Warnings
+                if (sectionsToSearch == null || sectionsToSearch.Contains("Warnings", StringComparer.OrdinalIgnoreCase))
                 {
-                    foreach (var warning in data.Warnings)
+                    if (data.Warnings != null)
                     {
-                        if (warning.MessageContent != null && warning.MessageContent.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                        foreach (var warning in data.Warnings)
                         {
-                            // Добавляем в списки только уникальные значения
-                            if (!messages.Contains(warning.MessageContent))
+                            if (warning.MessageContent != null && warning.MessageContent.Contains(searchString, StringComparison.OrdinalIgnoreCase))
                             {
-                                messages.Add(warning.MessageContent);
-                                checkTypes.Add(warning.CheckType);
-                                sections.Add("Warnings");
+                                // Добавляем в списки только уникальные значения
+                                if (!messages.Contains(warning.MessageContent))
+                                {
+                                    messages.Add(warning.MessageContent);
+                                    checkTypes.Add(warning.CheckType);
+                                    sections.Add("Warnings");
+                                }
                             }
                         }
                     }
