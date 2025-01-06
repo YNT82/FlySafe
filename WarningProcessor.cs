@@ -12,9 +12,9 @@
             case true:
                 ButtonStyleHelper.SetWarningButtonColor("#800000");
                 break;
-            case false:
-                ButtonStyleHelper.SetWarningButtonColor("#FF0000");
-                break;
+            //case false:
+                //ButtonStyleHelper.SetWarningButtonColor("#FF0000");
+                //break;
         }
 
         // Проверка наличия разных типов и изменение цвета лейблов в зависимости от типа
@@ -23,9 +23,9 @@
             case true:
                 LabelStyleHelper.SetFuelLabelColor("#806000");
                 break;
-            case false:
-                LabelStyleHelper.SetFuelLabelColor("#FF8C00");
-                break;
+            //case false:
+               // LabelStyleHelper.SetFuelLabelColor("#FF8C00");
+                //break;
         }
 
         switch (checkTypes.Contains("Systems"))
@@ -33,9 +33,9 @@
             case true:
                 LabelStyleHelper.SetApuLabelColor("#806000");
                 break;
-            case false:
-                LabelStyleHelper.SetApuLabelColor("#FF8C00");
-                break;
+            //case false:
+                //LabelStyleHelper.SetApuLabelColor("#FF8C00");
+                //break;
         }
 
         switch (checkTypes.Contains("Flight control"))
@@ -43,9 +43,9 @@
             case true:
                 LabelStyleHelper.SetFlightControlLabelColor("#806000");
                 break;
-            case false:
-                LabelStyleHelper.SetFlightControlLabelColor("#FF8C00");
-                break;
+            //case false:
+                //LabelStyleHelper.SetFlightControlLabelColor("#FF8C00");
+                //break;
         }
 
         switch (checkTypes.Contains("Weather"))
@@ -53,9 +53,9 @@
             case true:
                 LabelStyleHelper.SetAntiIceLabelColor("#806000");
                 break;
-            case false:
-                LabelStyleHelper.SetAntiIceLabelColor("#FF8C00");
-                break;
+            //case false:
+                //LabelStyleHelper.SetAntiIceLabelColor("#FF8C00");
+                //break;
         }
     }
 }
