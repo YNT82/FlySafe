@@ -329,5 +329,49 @@ namespace FlySafe
             // Информация об успешном завершении
             MessageBox.Show("Результаты сохранены в файл WarningsResult.txt");
         }
+
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            // Пример строк для передачи в метод
+            List<string> searchStrings = new List<string>
+            {
+                "GPU still connected",
+                "Wrong runway is used",
+                "Landing gear retract",
+                "Icing conditions"
+            };
+
+            // Списки для хранения результатов
+            List<string> messages;
+            List<string> checkTypes;
+            List<string> sections;
+
+            // Вызов метода обработки сообщений
+            MessageProcessor.ProcessMessages(searchStrings, out messages, out checkTypes, out sections);
+
+            // Очищаем текущие элементы в ECAM
+            ECAM.Inlines.Clear();
+
+            // Добавляем пустую строку в начало текста
+            ECAM.Inlines.Add(new LineBreak());
+
+            // Добавляем строки из messages в TextBlock с настройкой цвета
+            foreach (var message in messages)
+            {
+                // Создаем новый Run с текстом сообщения и цветом, соответствующим логике
+                var newRun = new Run(message)
+                {
+                    Foreground = new SolidColorBrush(Colors.White) // Здесь укажите нужный цвет текста
+                };
+                ECAM.Inlines.Add(newRun);
+                ECAM.Inlines.Add(new LineBreak());  // Добавляем разрыв строки
+            }
+
+            // Отображение результатов (пример)
+            MessageBox.Show($"Messages: {string.Join(", ", messages)}\n" +
+                            $"Check Types: {string.Join(", ", checkTypes)}\n" +
+                            $"Sections: {string.Join(", ", sections)}",
+                            "Process Messages Result");
+        }
     }
 }
