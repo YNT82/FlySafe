@@ -193,8 +193,8 @@ namespace FlySafe
         private void CautionBtn_Click(object sender, RoutedEventArgs e)
         {
             // Строки для поиска
-            // Получаем все элементы в TextBlock
-            var runs = ECAM.Inlines.OfType<Run>();
+            // Получаем все элементы в TextBlock (они являются Run-ами)
+            var runs = ECAM.Inlines.OfType<Run>().ToList();
 
             // Составляем список строк, извлекая текст из каждого элемента
             List<string> searchStrings = new List<string>();
@@ -210,6 +210,24 @@ namespace FlySafe
 
             // Вызов функции обработки сообщений и изменения цветов
             CautionProcessor.ProcessCautions(searchStrings, out messages, out checkTypes, out sections);
+
+            // Фильтруем строки, чтобы удалить те, которые содержатся в messages
+            var filteredRuns = runs
+                .Where(run => !messages.Any(message =>
+                    message.Trim().Equals(run.Text.Trim(), StringComparison.OrdinalIgnoreCase))) // Убираем лишние пробелы и игнорируем регистр
+                .ToList();
+
+            // Очищаем текущие элементы в ECAM
+            ECAM.Inlines.Clear();
+
+            // Добавляем оставшиеся строки обратно в TextBlock с сохранением цвета
+            foreach (var run in filteredRuns)
+            {
+                // Создаем новый Run для каждой строки с тем же цветом и текстом
+                var newRun = new Run(run.Text) { Foreground = run.Foreground };
+                ECAM.Inlines.Add(newRun);
+                ECAM.Inlines.Add(new LineBreak());  // Добавляем разрыв строки
+            }
 
             // Путь к файлу для сохранения результатов
             string resultFilePath = "CautionsResult.txt";
@@ -242,8 +260,8 @@ namespace FlySafe
         private void WarningBtn_Click(object sender, RoutedEventArgs e)
         {
             // Строки для поиска
-            // Получаем все элементы в TextBlock
-            var runs = ECAM.Inlines.OfType<Run>();
+            // Получаем все элементы в TextBlock (они являются Run-ами)
+            var runs = ECAM.Inlines.OfType<Run>().ToList();
 
             // Составляем список строк, извлекая текст из каждого элемента
             List<string> searchStrings = new List<string>();
@@ -259,6 +277,24 @@ namespace FlySafe
 
             // Вызов функции обработки сообщений и изменения цветов
             WarningProcessor.ProcessWarnings(searchStrings, out messages, out checkTypes, out sections);
+
+            // Фильтруем строки, чтобы удалить те, которые содержатся в messages
+            var filteredRuns = runs
+                .Where(run => !messages.Any(message =>
+                    message.Trim().Equals(run.Text.Trim(), StringComparison.OrdinalIgnoreCase))) // Убираем лишние пробелы и игнорируем регистр
+                .ToList();
+
+            // Очищаем текущие элементы в ECAM
+            ECAM.Inlines.Clear();
+
+            // Добавляем оставшиеся строки обратно в TextBlock с сохранением цвета
+            foreach (var run in filteredRuns)
+            {
+                // Создаем новый Run для каждой строки с тем же цветом и текстом
+                var newRun = new Run(run.Text) { Foreground = run.Foreground };
+                ECAM.Inlines.Add(newRun);
+                ECAM.Inlines.Add(new LineBreak());  // Добавляем разрыв строки
+            }
 
             // Путь к файлу для сохранения результатов
             string resultFilePath = "WarningsResult.txt";
