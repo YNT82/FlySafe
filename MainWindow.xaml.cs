@@ -220,6 +220,9 @@ namespace FlySafe
             // Очищаем текущие элементы в ECAM
             ECAM.Inlines.Clear();
 
+            // Добавляем пустую строку в начало текста
+            ECAM.Inlines.Add(new LineBreak());
+
             // Добавляем оставшиеся строки обратно в TextBlock с сохранением цвета
             foreach (var run in filteredRuns)
             {
@@ -286,6 +289,9 @@ namespace FlySafe
 
             // Очищаем текущие элементы в ECAM
             ECAM.Inlines.Clear();
+
+            // Добавляем пустую строку в начало текста
+            ECAM.Inlines.Add(new LineBreak());
 
             // Добавляем оставшиеся строки обратно в TextBlock с сохранением цвета
             foreach (var run in filteredRuns)
