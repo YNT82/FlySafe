@@ -10,10 +10,10 @@
         switch (sections.Contains("Cautions"))
         {
             case true:
-                ButtonStyleHelper.SetCautionButtonColor("#FF8C00");
+                ButtonStyleHelper.SetCautionButtonColor("#806000");
                 break;
             case false:
-                ButtonStyleHelper.SetCautionButtonColor("#806000");
+                ButtonStyleHelper.SetCautionButtonColor("#FF8C00");
                 break;
         }
 
@@ -21,40 +21,40 @@
         switch (checkTypes.Contains("Flight plan"))
         {
             case true:
-                LabelStyleHelper.SetFuelLabelColor("#FF8C00");
+                LabelStyleHelper.SetFuelLabelColor("#806000");
                 break;
             case false:
-                LabelStyleHelper.SetFuelLabelColor("#806000");
+                LabelStyleHelper.SetFuelLabelColor("#FF8C00");
                 break;
         }
 
         switch (checkTypes.Contains("Systems"))
         {
             case true:
-                LabelStyleHelper.SetApuLabelColor("#FF8C00");
+                LabelStyleHelper.SetApuLabelColor("#806000");
                 break;
             case false:
-                LabelStyleHelper.SetApuLabelColor("#806000");
+                LabelStyleHelper.SetApuLabelColor("#FF8C00");
                 break;
         }
 
         switch (checkTypes.Contains("Flight control"))
         {
             case true:
-                LabelStyleHelper.SetFlightControlLabelColor("#FF8C00");
+                LabelStyleHelper.SetFlightControlLabelColor("#806000");
                 break;
             case false:
-                LabelStyleHelper.SetFlightControlLabelColor("#806000");
+                LabelStyleHelper.SetFlightControlLabelColor("#FF8C00");
                 break;
         }
 
         switch (checkTypes.Contains("Weather"))
         {
             case true:
-                LabelStyleHelper.SetAntiIceLabelColor("#FF8C00");
+                LabelStyleHelper.SetAntiIceLabelColor("#806000");
                 break;
             case false:
-                LabelStyleHelper.SetAntiIceLabelColor("#806000");
+                LabelStyleHelper.SetAntiIceLabelColor("#FF8C00");
                 break;
         }
     }
