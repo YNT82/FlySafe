@@ -191,11 +191,6 @@ namespace FlySafe
 
         private void CautionBtn_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void WarningBtn_Click(object sender, RoutedEventArgs e)
-        {
             // Строки для поиска
             List<string> searchStrings = new List<string>
              {
@@ -211,10 +206,10 @@ namespace FlySafe
             List<string> sections;
 
             // Вызов функции обработки сообщений и изменения цветов
-            MessageProcessor.ProcessMessages(searchStrings, out messages, out checkTypes, out sections);
+            CautionProcessor.ProcessCautions(searchStrings, out messages, out checkTypes, out sections);
 
             // Путь к файлу для сохранения результатов
-            string resultFilePath = "result.txt";
+            string resultFilePath = "CautionsResult.txt";
 
             // Открытие/создание файла и запись результата
             using (StreamWriter writer = new StreamWriter(resultFilePath, false))
@@ -238,7 +233,54 @@ namespace FlySafe
                 }
             }
             // Информация об успешном завершении
-            MessageBox.Show("Результаты сохранены в файл result.txt");
+            MessageBox.Show("Результаты сохранены в файл CautionsResult.txt");
+        }
+
+        private void WarningBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Строки для поиска
+            List<string> searchStrings = new List<string>
+             {
+             "Wind shear",
+             "Landing lights",
+             "Spoilers not armed",
+             "Simbrief type does not match flight type"
+            };
+
+            // Списки для результатов
+            List<string> messages;
+            List<string> checkTypes;
+            List<string> sections;
+
+            // Вызов функции обработки сообщений и изменения цветов
+            MessageProcessor.ProcessMessages(searchStrings, out messages, out checkTypes, out sections);
+
+            // Путь к файлу для сохранения результатов
+            string resultFilePath = "WarningsResult.txt";
+
+            // Открытие/создание файла и запись результата
+            using (StreamWriter writer = new StreamWriter(resultFilePath, false))
+            {
+                writer.WriteLine("Messages:");
+                foreach (var message in messages)
+                {
+                    writer.WriteLine(message);
+                }
+
+                writer.WriteLine("\nCheck Types:");
+                foreach (var checkType in checkTypes)
+                {
+                    writer.WriteLine(checkType);
+                }
+
+                writer.WriteLine("\nSections:");
+                foreach (var section in sections)
+                {
+                    writer.WriteLine(section);
+                }
+            }
+            // Информация об успешном завершении
+            MessageBox.Show("Результаты сохранены в файл WarningsResult.txt");
         }
     }
 }
