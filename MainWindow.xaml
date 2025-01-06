@@ -24,7 +24,38 @@
         <Button x:Name="CautionBtn" Content="CAUTION" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" Margin="10,70,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" Background="#2C2F33" BorderBrush="Black" BorderThickness="1" FontSize="18" Click="CautionBtn_Click"/>
 
         <!-- Лейбл ECAM с правым кликом -->
-        <Label x:Name="ECAM" Content="ECAM MESSAGE TEST" HorizontalAlignment="Left" VerticalAlignment="Top" Width="350" Height="110" Margin="220,10,10,0" FontFamily="{StaticResource RobotoMonoFontFamily}" Background="#2C2F33" Foreground="White" BorderBrush="Black" BorderThickness="1" MouseRightButtonDown="ECAM_MouseRightButtonDown"/>
+        <Border x:Name="ECAMBorder"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        Width="350"
+        Height="110"
+        Margin="220,10,10,0"
+        Background="#2C2F33"
+        BorderBrush="Black"
+        BorderThickness="1">
+            <ScrollViewer x:Name="ECAMScrollViewer"
+                  Background="Transparent"
+                  VerticalScrollBarVisibility="Auto">
+                <TextBlock x:Name="ECAM"
+                   FontFamily="{StaticResource RobotoMonoFontFamily}"
+                   Foreground="White"
+                   TextWrapping="Wrap"
+                   Padding="5"
+                   MouseRightButtonDown="ECAM_MouseRightButtonDown">
+            <LineBreak/>
+            <Run Foreground="#FF0000" Text="Simbrief type does not match flight type"/>
+            <LineBreak/>
+            <Run Foreground="#FF8C00" Text="Landing lights"/>
+            <LineBreak/>       
+            <Run Foreground="#FF0000" Text="Spoilers not armed"/>
+            <LineBreak/>
+            <Run Foreground="#FF0000" Text="Wind shear"/>
+            <LineBreak/>
+                </TextBlock>
+            </ScrollViewer>
+        </Border>
+
+
 
         <!-- Лейблы -->
         <Label x:Name="FLT_CNT" Content="FLT CNT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="580,10,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" FontSize="14" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>

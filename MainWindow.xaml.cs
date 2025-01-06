@@ -90,11 +90,11 @@ namespace FlySafe
             Options.Owner = this;
 
             // Получаем позицию лейбла относительно главного окна
-            Point labelPosition = ECAM.TransformToAncestor(this).Transform(new Point(0, 0));
+            Point borderPosition = ECAMBorder.TransformToAncestor(this).Transform(new Point(0, 0));
 
             // Устанавливаем окно точно на позиции лейбла
-            Options.Left = this.Left + labelPosition.X;
-            Options.Top = this.Top + labelPosition.Y;
+            Options.Left = this.Left + borderPosition.X;
+            Options.Top = this.Top + borderPosition.Y;
 
             // Показываем окно как модальное
             Options.ShowDialog();
