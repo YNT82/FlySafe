@@ -1,10 +1,11 @@
-﻿public class MessageProcessor
+﻿//Не  используется
+public class MessageProcessor
 {
     // Метод для обработки сообщений и изменения цвета
     public static void ProcessMessages(List<string> searchStrings, out List<string> messages, out List<string> checkTypes, out List<string> sections)
     {
         // Вызов функции поиска
-        MessageSearcher.SearchMessages(searchStrings, out messages, out checkTypes, out sections);
+        MessageSearcher.SearchMessages(searchStrings, out messages, out checkTypes, out sections, new List<string> { "Warnings", "Cautions" });
 
         // Проверка наличия разных секций и изменение цвета кнопки в зависимости от секции
         switch (sections.Contains("Warnings"))
