@@ -365,11 +365,11 @@ namespace FlySafe
                 // Устанавливаем цвет в зависимости от типа сообщения
                 if (message.StartsWith("Warning"))
                 {
-                    newRun.Foreground = new SolidColorBrush(Colors.Red);  // Красный для предупреждений
+                    newRun.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0000"));  // Красный для предупреждений
                 }
                 else if (message.StartsWith("Caution"))
                 {
-                    newRun.Foreground = new SolidColorBrush(Colors.Orange);  // Оранжевый для предостережений
+                    newRun.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF8C00"));  // Оранжевый для предостережений
                 }
                 else
                 {
