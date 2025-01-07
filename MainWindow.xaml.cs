@@ -360,19 +360,27 @@ namespace FlySafe
             foreach (var message in messages)
             {
                 // Создаем новый Run с текстом сообщения
-                Run newRun = new Run(message);
+                Run newRun;
 
                 // Устанавливаем цвет в зависимости от типа сообщения
-                if (message.StartsWith("Warning"))
+                if (message.StartsWith("Warnings"))
                 {
+                    // Удаляем признак "Warning" из сообщения
+                    string cleanMessage = message.Substring("Warnings".Length).TrimStart(':', ' ');
+                    newRun = new Run(cleanMessage);
                     newRun.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0000"));  // Красный для предупреждений
                 }
-                else if (message.StartsWith("Caution"))
+                else if (message.StartsWith("Cautions"))
                 {
+                    // Удаляем признак "Caution" из сообщения
+                    string cleanMessage = message.Substring("Cautions".Length).TrimStart(':', ' ');
+                    newRun = new Run(cleanMessage);
                     newRun.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF8C00"));  // Оранжевый для предостережений
                 }
                 else
                 {
+                    // Оставляем сообщение без изменений для информационных сообщений
+                    newRun = new Run(message);
                     newRun.Foreground = new SolidColorBrush(Colors.White);  // Белый для информационных сообщений
                 }
 
