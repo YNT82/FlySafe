@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlySafe"
         mc:Ignorable="d"
-        Title="FlySafe" Height="130" Width="800" Background="#2C2F33"
+        Title="FlySafe" Height="130" Width="800"
         WindowStyle="None" ResizeMode="NoResize"
         Icon="pack://application:,,,/Images/app_icon.ico"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        Background="Transparent" AllowsTransparency="True">
 
     <Window.Resources>
         <!-- Добавляем шрифт в качестве ресурса -->
@@ -17,7 +18,14 @@
         <FontFamily x:Key="RobotoMonoFontFamily">/FlySafe;component/Fonts/RobotoMono-Regular.ttf#Roboto Mono</FontFamily>
     </Window.Resources>
 
-    <Grid Background="#2C2F33" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+    <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Images/back.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.Clip>
+            <!-- Скругление углов окна -->
+            <RectangleGeometry RadiusX="5" RadiusY="5" Rect="0,0,800,130"/>
+        </Grid.Clip>
         <!-- Кнопка WARNING -->
         <Button x:Name="WarningBtn" Content="WARNING" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" Margin="10,10,0,0" Foreground="#FF0000" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" Background="#2C2F33" BorderBrush="Black" BorderThickness="1" FontSize="18" Click="WarningBtn_Click"/>
         <!-- Кнопка CAUTION -->

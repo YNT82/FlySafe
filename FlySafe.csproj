@@ -47,6 +47,13 @@
 		<!-- Можно добавить дополнительные файлы сюда, используя тот же шаблон -->
 	</ItemGroup>
 
+
+	<ItemGroup>
+	  <Resource Include="Images\Back.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	</ItemGroup>
+
   <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
