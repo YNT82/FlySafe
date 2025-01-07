@@ -72,22 +72,20 @@ public class MessageProcessor
         // Окрашиваем сообщения в зависимости от секции
         for (int i = 0; i < messages.Count; i++)
         {
-            string section = sections.Count > i ? sections[i] : ""; // Безопасно получаем секцию для сообщения
             string message = messages[i];
+            string foundSection = "Unknown";
 
-            // Применяем цвета в зависимости от секции
-            if (section == "Warnings")
+            // Используем MessageSearcher для поиска секции для текущего сообщения
+            MessageSearcher.SearchMessages(new List<string> { message }, out var tempMessages, out var tempCheckTypes, out var tempSections, new List<string> { "Warnings", "Cautions" });
+
+            // Определяем секцию, если она найдена
+            if (tempSections.Count > 0)
             {
-                messages[i] = $"Warning: {message}"; // Мы добавляем текст для понимания, что это Warning
+                foundSection = tempSections[0]; // Берем первую найденную секцию
             }
-            else if (section == "Cautions")
-            {
-                messages[i] = $"Caution: {message}"; // Аналогично для Caution
-            }
-            else
-            {
-                messages[i] = $"Info: {message}";  // Для других сообщений
-            }
+
+            // Обновляем сообщение с найденной секцией
+            messages[i] = $"{foundSection}: {message}";
         }
     }
 }
