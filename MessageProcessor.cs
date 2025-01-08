@@ -1,5 +1,4 @@
-﻿//Не  используется
-public class MessageProcessor
+﻿public class MessageProcessor
 {
     // Метод для обработки сообщений и изменения цвета
     public static void ProcessMessages(List<string> searchStrings, out List<string> messages, out List<string> checkTypes, out List<string> sections)
@@ -21,10 +20,12 @@ public class MessageProcessor
         switch (sections.Contains("Cautions"))
         {
             case true:
-                ButtonStyleHelper.SetCautionButtonColor("#FF8C00");
+                //ButtonStyleHelper.SetCautionButtonColor("#FF8C00");
+                ButtonStyleHelper.SetCautionButtonColor("#cccd3f");
                 break;
             case false:
-                ButtonStyleHelper.SetCautionButtonColor("#806000");
+                //ButtonStyleHelper.SetCautionButtonColor("#806000");
+                ButtonStyleHelper.SetCautionButtonColor("#9d9d87");
                 break;
         }
 
