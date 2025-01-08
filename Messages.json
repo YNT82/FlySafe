@@ -10,7 +10,7 @@
         "checks": [
           {
             "code": "404",
-            "description": "IFR"
+            "description": "Marginal VFR"
           },
           {
             "code": "500",
@@ -26,11 +26,11 @@
           },
           {
             "code": "519",
-            "description": "MIFR"
+            "description": "Instrument Flight Rules"
           },
           {
             "code": "520",
-            "description": "LIFR"
+            "description": "Low Instrument Flight Rules"
           },
           {
             "code": "521",
@@ -254,7 +254,7 @@
     },
     {
       "code": "404",
-      "message": "IFR",
+      "message": "Marginal VFR",
       "check_type": "Weather"
     }
   ],
@@ -351,12 +351,12 @@
     },
     {
       "code": "518",
-      "message": "MIFR",
+      "message": "Instrument Flight Rules",
       "check_type": "Weather"
     },
     {
       "code": "519",
-      "message": "LIFR",
+      "message": "Low Instrument Flight Rules",
       "check_type": "Weather"
     },
     {

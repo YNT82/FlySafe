@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
+using System.Windows.Media.Media3D;
 
 namespace FlySafe
 {
@@ -259,6 +260,19 @@ namespace FlySafe
             }
             // Информация об успешном завершении
             MessageBox.Show("Результаты сохранены в файл CautionsResult.txt");
+
+            // Проверка количества непустых строк
+            int nonEmptyLinesCount = filteredRuns.Count(run => !string.IsNullOrWhiteSpace(run.Text));
+
+            // Скрыть/показать картинку в зависимости от количества строк
+            if (nonEmptyLinesCount > 5)
+            {
+                Arrows.Visibility = Visibility.Visible;  // Сделать картинку видимой
+            }
+            else
+            {
+                Arrows.Visibility = Visibility.Collapsed;  // Сделать картинку невидимой
+            }
         }
 
         private void WarningBtn_Click(object sender, RoutedEventArgs e)
@@ -329,6 +343,19 @@ namespace FlySafe
             }
             // Информация об успешном завершении
             MessageBox.Show("Результаты сохранены в файл WarningsResult.txt");
+
+            // Проверка количества непустых строк
+            int nonEmptyLinesCount = filteredRuns.Count(run => !string.IsNullOrWhiteSpace(run.Text));
+
+            // Скрыть/показать картинку в зависимости от количества строк
+            if (nonEmptyLinesCount > 5)
+            {
+                Arrows.Visibility = Visibility.Visible;  // Сделать картинку видимой
+            }
+            else
+            {
+                Arrows.Visibility = Visibility.Collapsed;  // Сделать картинку невидимой
+            }
         }
 
         private void Test_Click(object sender, RoutedEventArgs e)
@@ -348,7 +375,13 @@ namespace FlySafe
                 "Fuel quantity is insufficient",
                 "Flaps extended during cruise",
                 "Landing lights",
-                "Packs off"
+                "Packs off",
+                "Simbrief units do not match flight units",
+                "XPNDR is off",
+                "Simbrief type does not match flight type",
+                "Marginal VFR",
+                "Low Instrument Flight Rules",
+                "Instrument Flight Rules"
             };
 
             // Списки для хранения результатов
