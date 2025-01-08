@@ -198,6 +198,6 @@
            BorderThickness="1"/>
         </Grid>
         <Label x:Name="ConnectLabel" HorizontalContentAlignment="Right" Content="" HorizontalAlignment="Left" Margin="395,11,0,0" VerticalAlignment="Top" Foreground="#FF8C00" FontFamily="Roboto Mono" Width="174" FontSize="10"/>
-        <Button x:Name="Test" Content="Test" HorizontalAlignment="Left" Height="22" Margin="495,95,0,0" VerticalAlignment="Top" Width="74" Click="Test_Click"/>
+        <Button x:Name="Test" Content="Test" HorizontalAlignment="Left" Height="22" Margin="445,73,0,0" VerticalAlignment="Top" Width="74" Click="Test_Click"/>
     </Grid>
 </Window>
