@@ -143,7 +143,7 @@
             </Grid.Background>
 
             <!-- Текст внутри -->
-            <Label x:Name="FLT_CNT" Content="FLT CNT" 
+            <Label x:Name="FLT_CNT" Content="FLT CONT" 
            Foreground="#FF8C00" 
            FontFamily="{StaticResource OcrFontFamily}" 
            FontWeight="Bold" 
