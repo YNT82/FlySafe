@@ -56,7 +56,7 @@
                 <ImageBrush ImageSource="pack://application:,,,/Images/Button.png" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
-        
+
         <!-- Кнопка CAUTION -->
         <Button x:Name="CautionBtn" 
         Content="CAUTION" 
@@ -124,6 +124,16 @@
                 </TextBlock>
             </ScrollViewer>
         </Border>
+
+        <!-- Признак скролла -->
+        <Image Source="pack://application:,,,/Images/Arrows.png" 
+        x:Name="Arrows"        
+        HorizontalAlignment="Left" 
+        VerticalAlignment="Top" 
+        Width="10" 
+        Height="20"
+        Margin="550,85,0,0"
+        Visibility="Collapsed"/>
 
         <!-- Лейблы -->
         <Grid x:Name="FLT_CNT_Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="580,10,0,0">

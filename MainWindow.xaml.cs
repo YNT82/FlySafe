@@ -339,7 +339,16 @@ namespace FlySafe
                 "GPU still connected",
                 "Wrong runway is used",
                 "Landing gear retract",
-                "Icing conditions"
+                "Icing conditions",
+                "Crosswind",
+                "Landing gear extend",
+                "Trim setting incorrect",
+                "Baro not set",
+                "APU still running",
+                "Fuel quantity is insufficient",
+                "Flaps extended during cruise",
+                "Landing lights",
+                "Packs off"
             };
 
             // Списки для хранения результатов
@@ -387,6 +396,18 @@ namespace FlySafe
                 // Добавляем Run в TextBlock для отображения
                 ECAM.Inlines.Add(newRun);
                 ECAM.Inlines.Add(new LineBreak());  // Добавляем разрыв строки
+
+                // Показать/скрыть картинку в зависимости от количества сообщений
+                if (messages.Count > 5)
+                {
+                    // Если сообщений больше 5, картинка будет видимой
+                    Arrows.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    // Если сообщений 5 или меньше, картинка будет скрыта
+                    Arrows.Visibility = Visibility.Collapsed;
+                }
             }
 
             // Отображение результатов (пример)
