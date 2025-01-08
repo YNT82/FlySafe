@@ -69,10 +69,78 @@
         </Border>
 
         <!-- Лейблы -->
-        <Label x:Name="FLT_CNT" Content="FLT CNT" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="580,10,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" FontSize="14" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="FUEL" Content="FUEL" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="580,70,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" FontSize="14" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="ANTI_ICE" Content="ANTI-ICE" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="690,10,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" FontSize="14" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="APU" Content="APU" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="690,70,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" FontSize="14" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Grid x:Name="FLT_CNT_Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="580,10,0,0">
+            <!-- Фон в виде изображения -->
+            <Grid.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Images/Type.png" Stretch="UniformToFill"/>
+            </Grid.Background>
+
+            <!-- Текст внутри -->
+            <Label x:Name="FLT_CNT" Content="FLT CNT" 
+           Foreground="#FF8C00" 
+           FontFamily="{StaticResource OcrFontFamily}" 
+           FontWeight="Bold" 
+           FontSize="14" 
+           HorizontalContentAlignment="Center" 
+           VerticalContentAlignment="Center" 
+           Background="Transparent" 
+           BorderBrush="Black" 
+           BorderThickness="1"/>
+        </Grid>
+        <Grid x:Name="FUEL_Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="580,70,0,0">
+            <!-- Фон в виде изображения -->
+            <Grid.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Images/Type.png" Stretch="UniformToFill"/>
+            </Grid.Background>
+
+            <!-- Текст внутри -->
+            <Label x:Name="FUEL" Content="FUEL" 
+           Foreground="#FF8C00" 
+           FontFamily="{StaticResource OcrFontFamily}" 
+           FontWeight="Bold" 
+           FontSize="14" 
+           HorizontalContentAlignment="Center" 
+           VerticalContentAlignment="Center" 
+           Background="Transparent" 
+           BorderBrush="Black" 
+           BorderThickness="1"/>
+        </Grid>
+        <Grid x:Name="ANTI_ICE_Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="690,10,0,0">
+            <!-- Фон в виде изображения -->
+            <Grid.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Images/Type.png" Stretch="UniformToFill"/>
+            </Grid.Background>
+
+            <!-- Текст внутри -->
+            <Label x:Name="ANTI_ICE" Content="ANTI-ICE" 
+           Foreground="#FF8C00" 
+           FontFamily="{StaticResource OcrFontFamily}" 
+           FontWeight="Bold" 
+           FontSize="14" 
+           HorizontalContentAlignment="Center" 
+           VerticalContentAlignment="Center" 
+           Background="Transparent" 
+           BorderBrush="Black" 
+           BorderThickness="1"/>
+        </Grid>
+        <Grid x:Name="APU_Grid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="690,70,0,0">
+            <!-- Фон в виде изображения -->
+            <Grid.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Images/Type.png" Stretch="UniformToFill"/>
+            </Grid.Background>
+
+            <!-- Текст внутри -->
+            <Label x:Name="APU" Content="APU" 
+           Foreground="#FF8C00" 
+           FontFamily="{StaticResource OcrFontFamily}" 
+           FontWeight="Bold" 
+           FontSize="14" 
+           HorizontalContentAlignment="Center" 
+           VerticalContentAlignment="Center" 
+           Background="Transparent" 
+           BorderBrush="Black" 
+           BorderThickness="1"/>
+        </Grid>
         <Label x:Name="ConnectLabel" HorizontalContentAlignment="Right" Content="" HorizontalAlignment="Left" Margin="395,11,0,0" VerticalAlignment="Top" Foreground="#FF8C00" FontFamily="Roboto Mono" Width="174" FontSize="10"/>
         <Button x:Name="Test" Content="Test" HorizontalAlignment="Left" Height="22" Margin="495,95,0,0" VerticalAlignment="Top" Width="74" Click="Test_Click"/>
     </Grid>
