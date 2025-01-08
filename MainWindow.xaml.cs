@@ -234,6 +234,17 @@ namespace FlySafe
                 ECAM.Inlines.Add(new LineBreak());  // Добавляем разрыв строки
             }
 
+            // Заново получаем строки из ECAM
+            var updatedRuns = ECAM.Inlines.OfType<Run>().ToList();
+            List<string> updatedSearchStrings = new List<string>();
+            foreach (var run in updatedRuns)
+            {
+                updatedSearchStrings.Add(run.Text);
+            }
+
+            // Вызов MessageProcessor для обработки сообщений с новыми строками
+            MessageProcessor.ProcessMessages(updatedSearchStrings, out messages, out checkTypes, out sections);
+
             // Путь к файлу для сохранения результатов
             string resultFilePath = "CautionsResult.txt";
 
@@ -316,6 +327,17 @@ namespace FlySafe
                 ECAM.Inlines.Add(newRun);
                 ECAM.Inlines.Add(new LineBreak());  // Добавляем разрыв строки
             }
+
+            // Заново получаем строки из ECAM
+            var updatedRuns = ECAM.Inlines.OfType<Run>().ToList();
+            List<string> updatedSearchStrings = new List<string>();
+            foreach (var run in updatedRuns)
+            {
+                updatedSearchStrings.Add(run.Text);
+            }
+
+            // Вызов MessageProcessor для обработки сообщений с новыми строками
+            MessageProcessor.ProcessMessages(updatedSearchStrings, out messages, out checkTypes, out sections);
 
             // Путь к файлу для сохранения результатов
             string resultFilePath = "WarningsResult.txt";
