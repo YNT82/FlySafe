@@ -27,9 +27,65 @@
             <RectangleGeometry RadiusX="5" RadiusY="5" Rect="0,0,800,130"/>
         </Grid.Clip>
         <!-- Кнопка WARNING -->
-        <Button x:Name="WarningBtn" Content="WARNING" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" Margin="10,10,0,0" Foreground="#FF0000" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" Background="#2C2F33" BorderBrush="Black" BorderThickness="1" FontSize="18" Click="WarningBtn_Click"/>
+        <Button x:Name="WarningBtn" 
+        Content="WARNING" 
+        HorizontalAlignment="Left" 
+        VerticalAlignment="Top" 
+        Width="200" 
+        Height="50" 
+        Margin="10,10,0,0" 
+        Foreground="#FF0000" 
+        FontFamily="{StaticResource OcrFontFamily}" 
+        FontWeight="Bold" 
+        BorderBrush="Black" 
+        BorderThickness="1" 
+        FontSize="18" 
+        Click="WarningBtn_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    BorderBrush="Black"
+                    CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Images/Button.png" Stretch="UniformToFill"/>
+            </Button.Background>
+        </Button>
         <!-- Кнопка CAUTION -->
-        <Button x:Name="CautionBtn" Content="CAUTION" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" Margin="10,70,0,0" Foreground="#FF8C00" FontFamily="{StaticResource OcrFontFamily}" FontWeight="Bold" Background="#2C2F33" BorderBrush="Black" BorderThickness="1" FontSize="18" Click="CautionBtn_Click"/>
+        <Button x:Name="CautionBtn" 
+        Content="CAUTION" 
+        HorizontalAlignment="Left" 
+        VerticalAlignment="Top" 
+        Width="200" 
+        Height="50" 
+        Margin="10,70,0,0" 
+        Foreground="#FF8C00" 
+        FontFamily="{StaticResource OcrFontFamily}" 
+        FontWeight="Bold" 
+        FontSize="18" 
+        Click="CautionBtn_Click" 
+        BorderBrush="Black" 
+        BorderThickness="1">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    BorderBrush="Black"
+                    CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Images/Button.png" Stretch="UniformToFill"/>
+            </Button.Background>
+        </Button>
 
         <!-- Лейбл ECAM с правым кликом -->
         <Border x:Name="ECAMBorder"
