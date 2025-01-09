@@ -9,10 +9,7 @@
     <ApplicationIcon>Images\app_icon.ico</ApplicationIcon>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Images\Arrows.png" />
-    <None Remove="Images\Button.png" />
-  </ItemGroup>
+
 
 	
   <ItemGroup>
@@ -67,6 +64,9 @@
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="Images\Type.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Sounds\Warning.wav">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Resource>
 	</ItemGroup>
