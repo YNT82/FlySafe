@@ -15,7 +15,11 @@
     </Window.Resources>
 
     <!-- Скругленные углы -->
-    <Border CornerRadius="5" Background="#2C2F33" BorderBrush="Black" BorderThickness="1">
+    <Border CornerRadius="5" BorderBrush="Black" BorderThickness="1">
+        <!-- Устанавливаем фон с изображением -->
+        <Border.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Images/ECAM.png" Stretch="UniformToFill"/>
+        </Border.Background>
         <Grid Width="350" Height="110">
             <!-- Чекбокс с шрифтом и текстом "Always on top" -->
             <CheckBox x:Name="AlwaysOnTopCheckBox" Content="Always on top" HorizontalAlignment="Left" VerticalAlignment="Top"
