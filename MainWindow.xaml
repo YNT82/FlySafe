@@ -125,6 +125,17 @@
             </ScrollViewer>
         </Border>
 
+        <!-- Close -->
+        <Image Source="pack://application:,,,/Images/Close.png" 
+        x:Name="Close"        
+        HorizontalAlignment="Left" 
+        VerticalAlignment="Center" 
+        Width="20" 
+        Height="20"
+        Margin="545,0,0,0"
+        Visibility="Visible" RenderTransformOrigin="-1.23,5.835"
+        MouseLeftButtonDown="Close_MouseLeftButtonDown"/>
+
         <!-- Признак скролла -->
         <Image Source="pack://application:,,,/Images/Arrows.png" 
         x:Name="Arrows"        

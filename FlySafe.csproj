@@ -9,6 +9,10 @@
     <ApplicationIcon>Images\app_icon.ico</ApplicationIcon>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\Close.png" />
+  </ItemGroup>
+
 
 
 	
@@ -60,6 +64,7 @@
 	  <Resource Include="Images\Button.png">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Resource>
+	  <Resource Include="Images\Close.png" />
 	  <Resource Include="Images\ECAM.png">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Resource>

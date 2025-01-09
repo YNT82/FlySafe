@@ -121,6 +121,13 @@ namespace FlySafe
             Options.ShowDialog();
         }
 
+        // Выход
+        private void Close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // Закрытие главного окна приложения
+            this.Close();
+        }
+
         // Таймер начальной задержки
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
