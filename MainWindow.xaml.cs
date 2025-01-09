@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
+using System.Windows.Input;
 
 namespace FlySafe
 {
@@ -14,6 +15,8 @@ namespace FlySafe
         private const string ConfigFilePath = "Settings.cfg"; // Путь к файлу настроек
         private System.Timers.Timer? initialDelayTimer;
         private System.Timers.Timer? connectionTimer;
+        // Переменная для хранения смещения мыши относительно окна
+        private Point _mouseOffset;
 
         // Импортируем функцию для открытия SimConnect
         [DllImport("SimConnect.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
@@ -35,6 +38,9 @@ namespace FlySafe
 
             // Обработчик для перетаскивания окна
             this.MouseLeftButtonDown += Grid_MouseLeftButtonDown;
+
+            // Привязываем событие MouseDown для перетаскивания окна за текстовый блок
+            ECAM.MouseDown += DragTextBlock_MouseDown;
         }
 
         // Загружаем состояние окна "Поверх всех окон"
@@ -80,6 +86,18 @@ namespace FlySafe
             if (e.ButtonState == System.Windows.Input.MouseButtonState.Pressed)
             {
                 this.DragMove();  // Перетаскивание окна
+            }
+        }
+
+        // Обработчик события MouseDown для захвата мыши, перетаскивание окна за текстовый блок
+        private void DragTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                // Сохраняем начальное смещение мыши относительно окна
+                _mouseOffset = e.GetPosition(this);
+                // Начинаем перетаскивание
+                this.DragMove();
             }
         }
 
