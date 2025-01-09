@@ -27,7 +27,7 @@ namespace FlySafe.Helpers
             SoundPlayer player = new SoundPlayer(stream);
 
             // Воспроизведение звука в отдельном потоке, чтобы не блокировать UI
-            await Task.Run(() => player.PlaySync()); // PlaySync - синхронный метод, но выполняется в другом потоке
+            await Task.Run(() => player.Play()); // PlaySync - синхронный метод, но выполняется в другом потоке
         }
     }
 }
