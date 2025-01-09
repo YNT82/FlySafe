@@ -1,4 +1,8 @@
-﻿using System.Windows.Controls;
+﻿//Обработчик строк, переданных в ECAM: очищаем ECAM, обрабатываем сообщения,
+//убираем прищнак класса сообщения, добавляем возвращенные строки с переданным цветом,
+//показываем или скрываем признак скролла.
+
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows;

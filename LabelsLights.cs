@@ -1,4 +1,6 @@
-﻿using System.Windows.Media;
+﻿// Изменяем цвет лейблов по типам сообщений
+
+using System.Windows.Media;
 using FlySafe;
 
 public static class LabelStyleHelper

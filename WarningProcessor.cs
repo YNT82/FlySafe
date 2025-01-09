@@ -1,4 +1,7 @@
-﻿public class WarningProcessor
+﻿// Ищем сообщения среди Warnings,
+// ВЫКЛЮЧАЕМ кнопки и лейблы для найденных сообщений.
+
+public class WarningProcessor
 {
     // Метод для обработки сообщений и изменения цвета для секции Warnings
     public static void ProcessWarnings(List<string> searchStrings, out List<string> messages, out List<string> checkTypes, out List<string> sections)

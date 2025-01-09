@@ -1,4 +1,8 @@
-﻿public class MessageProcessor
+﻿//Принимаем сообщения, ищем их секции (классы) и типы.
+//Окрашиваем кнопки и лейблы типов для найденных сообщений.
+//Окрашиваем сообщения в зависимости от класса и добавляем признак класса (секции).
+
+public class MessageProcessor
 {
     // Метод для обработки сообщений и изменения цвета
     public static void ProcessMessages(List<string> searchStrings, out List<string> messages, out List<string> checkTypes, out List<string> sections)

@@ -1,4 +1,9 @@
-﻿using System.IO;
+﻿//По клику забираем строки из ECAM, 
+//
+//Удаляем найденные Cautions, добавляем обратно оставшиеся строки,
+//Обрабатываем строки, приводим цвета кнопок, строк, лейблов в соответствие с классами и типами.
+
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;

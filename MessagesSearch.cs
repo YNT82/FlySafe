@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿//В файле Json ищем сообщения с их типами и классами (секциями), учитываем уникальность всех элементов.
+
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;

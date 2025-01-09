@@ -1,4 +1,7 @@
-﻿public class CautionProcessor
+﻿// Ищем сообщения среди Cautions,
+// ВЫКЛЮЧАЕМ кнопки и лейблы для найденных сообщений.
+
+public class CautionProcessor
 {
     // Метод для обработки сообщений и изменения цвета для секции Cautions
     public static void ProcessCautions(List<string> searchStrings, out List<string> messages, out List<string> checkTypes, out List<string> sections)
@@ -10,7 +13,7 @@
         switch (sections.Contains("Cautions"))
         {
             case true:
-                ButtonStyleHelper.SetCautionButtonColor("#806000");
+                ButtonStyleHelper.SetCautionButtonColor("#9d9d87"); //#800000
                 break;
             //case false:
                // ButtonStyleHelper.SetCautionButtonColor("#FF8C00");
