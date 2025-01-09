@@ -7,6 +7,7 @@ using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows;
 using System.Media;
+using FlySafe.Helpers;
 
 public class ECAMHandler
 {
@@ -23,13 +24,8 @@ public class ECAMHandler
         // Если есть Warnings, воспроизводим звук
         if (sections.Contains("Warnings"))
         {
-            // Получаем поток для звукового файла в ресурсах
-            var uri = new Uri("pack://application:,,,/Sounds/Warning.wav");
-            var stream = Application.GetResourceStream(uri).Stream;
-
-            // Используем SoundPlayer для воспроизведения
-            SoundPlayer player = new SoundPlayer(stream);
-            player.Play();
+            // Вызов асинхронного метода из класса SoundPlayerHelper
+            Task.Run(async () => await SoundPlayerHelper.PlaySoundAsync("pack://application:,,,/Sounds/Warning.wav"));
         }
 
         // Очищаем текущие элементы в ECAM

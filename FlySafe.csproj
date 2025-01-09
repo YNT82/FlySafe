@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <None Remove="Images\Close.png" />
+    <None Remove="Sounds\Button.wav" />
   </ItemGroup>
 
 
@@ -69,6 +70,9 @@
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="Images\Type.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Sounds\Button.wav">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Resource>
 	  <Resource Include="Sounds\Warning.wav">

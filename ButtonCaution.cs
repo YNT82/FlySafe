@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using FlySafe.Helpers;
 
 public class ButtonCaution
 {
@@ -20,6 +21,9 @@ public class ButtonCaution
 
     public void HandleCautionButtonClick()
     {
+        // Вызов асинхронного метода из класса SoundPlayerHelper
+        Task.Run(async () => await SoundPlayerHelper.PlaySoundAsync("pack://application:,,,/Sounds/Button.wav"));
+
         // Строки для поиска
         // Получаем все элементы в TextBlock (они являются Run-ами)
         var runs = ECAM.Inlines.OfType<Run>().ToList();
