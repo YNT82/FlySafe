@@ -10,6 +10,7 @@ public class CautionProcessor
         MessageSearcher.SearchMessages(searchStrings, out messages, out checkTypes, out sections, new List<string> { "Cautions"});
 
         // Проверка наличия секции Cautions и изменение цвета кнопки в зависимости от секции
+        // Фактически не требуется, т.к. при Reset вызывается обработка всех оставшихся в ECAM сообщений, в т.ч. перекрашивание кнопок.
         switch (sections.Contains("Cautions"))
         {
             case true:

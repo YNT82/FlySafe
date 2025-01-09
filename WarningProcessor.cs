@@ -10,6 +10,7 @@ public class WarningProcessor
         MessageSearcher.SearchMessages(searchStrings, out messages, out checkTypes, out sections, new List<string> { "Warnings" });
 
         // Проверка наличия секции Warnings и изменение цвета кнопки в зависимости от секции
+        // Фактически не требуется, т.к. при Reset вызывается обработка всех оставшихся в ECAM сообщений, в т.ч. перекрашивание кнопок.
         switch (sections.Contains("Warnings"))
         {
             case true:
