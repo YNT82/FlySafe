@@ -78,6 +78,7 @@ public class ButtonCaution
         // Путь к файлу для сохранения результатов
         string resultFilePath = "CautionsResult.txt";
 
+        /*
         // Открытие/создание файла и запись результата
         using (StreamWriter writer = new StreamWriter(resultFilePath, false))
         {
@@ -101,6 +102,7 @@ public class ButtonCaution
         }
         // Информация об успешном завершении
         MessageBox.Show("Результаты сохранены в файл CautionsResult.txt");
+        */
 
         // Проверка количества непустых строк
         int nonEmptyLinesCount = filteredRuns.Count(run => !string.IsNullOrWhiteSpace(run.Text));

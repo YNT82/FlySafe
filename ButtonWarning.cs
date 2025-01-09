@@ -75,6 +75,7 @@ public class ButtonWarning
         // Вызов MessageProcessor для обработки сообщений с новыми строками
         MessageProcessor.ProcessMessages(updatedSearchStrings, out messages, out checkTypes, out sections);
 
+        /*
         // Путь к файлу для сохранения результатов
         string resultFilePath = "WarningsResult.txt";
 
@@ -101,6 +102,7 @@ public class ButtonWarning
         }
         // Информация об успешном завершении
         MessageBox.Show("Результаты сохранены в файл WarningsResult.txt");
+        */
 
         // Проверка количества непустых строк
         int nonEmptyLinesCount = filteredRuns.Count(run => !string.IsNullOrWhiteSpace(run.Text));
