@@ -192,16 +192,18 @@ namespace FlySafe
             }
         }
 
-        private void CautionBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var ButtonCaution = new ButtonCaution(ECAM, Arrows);
-            ButtonCaution.HandleCautionButtonClick();
-        }
-
+        //Warnings reset
         private void WarningBtn_Click(object sender, RoutedEventArgs e)
         {
             var ButtonWarning = new ButtonWarning(ECAM, Arrows);
             ButtonWarning.HandleWarningButtonClick();
+        }
+
+        //Cautions reset
+        private void CautionBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var ButtonCaution = new ButtonCaution(ECAM, Arrows);
+            ButtonCaution.HandleCautionButtonClick();
         }
 
         private void Test_Click(object sender, RoutedEventArgs e)
