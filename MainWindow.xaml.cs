@@ -27,6 +27,7 @@ namespace FlySafe
         private static extern int SimConnect_Close(IntPtr hSimConnect);
 
         private IntPtr hSimConnect = IntPtr.Zero;
+        private SimConnectHandler? simConnectHandler;
 
         public MainWindow()
         {
@@ -136,8 +137,8 @@ namespace FlySafe
             initialDelayTimer.AutoReset = false; // Однократное срабатывание
             initialDelayTimer.Start();
         }
-        // Первая попытка подключения
 
+        // Первая попытка подключения
         private void StartConnectionTimer(object? sender, ElapsedEventArgs e)
         {
             // Остановка таймера начальной задержки
@@ -189,12 +190,21 @@ namespace FlySafe
                 int result = SimConnect_Open(ref hSimConnect, "WPF SimConnect", IntPtr.Zero, 0, 0, 0);
                 if (result == 0) // 0 — это успешный код подключения
                 {
-                    ConnectLabel.Content = "Ready";
+                    ConnectLabel.Content = "Connected";
                     ConnectLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#00C800"));
+
+                    // Создаем обработчик SimConnect
+                    simConnectHandler = new SimConnectHandler(hSimConnect);
+
+                    // Подписываемся на событие начала симуляции
+                    simConnectHandler.SimStartEvent += OnSimStart;
+
+                    var thread = new System.Threading.Thread(simConnectHandler.Start);
+                    thread.Start();
                 }
                 else
                 {
-                    ConnectLabel.Content = $"Waiting for Simulator"; //{result}
+                    ConnectLabel.Content = "Waiting for Simulator";
                     ConnectLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF8C00"));
                 }
             }
@@ -203,6 +213,21 @@ namespace FlySafe
                 ConnectLabel.Content = $"Exception: {ex.Message}";
                 ConnectLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0000"));
             }
+        }
+
+        // Метод для обработки события SimStart
+        private void OnSimStart()
+        {
+            // Печатаем, чтобы увидеть, если событие от SimStart обрабатывается
+            //Console.WriteLine("Событие SimStart получено в MainWindow!");
+
+            // Обновляем ConnectLabel через Dispatcher
+            Dispatcher.Invoke(() =>
+            {
+                //Console.WriteLine("Обновляем UI: ConnectLabel.");
+                ConnectLabel.Content = "Ready";
+                ConnectLabel.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#00C800"));
+            });
         }
 
         // Функция закрытия соединения
@@ -215,6 +240,9 @@ namespace FlySafe
                 SimConnect_Close(hSimConnect);
                 hSimConnect = IntPtr.Zero;
             }
+
+            // Если есть активный обработчик SimConnect, отключаем его
+            simConnectHandler?.Disconnect();
         }
 
         //Warnings reset
